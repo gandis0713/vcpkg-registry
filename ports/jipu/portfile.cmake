@@ -17,10 +17,16 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 vcpkg_cmake_config_fixup(CONFIG_PATH "share/jipu")
-vcpkg_fixup_pkgconfig()
+
+file(READ "${CURRENT_PACKAGES_DIR}/share/jipu/jipu-config.cmake" PRE_JIPU_CONFIG_CMAKE)
+file(WRITE "${CURRENT_PACKAGES_DIR}/share/jipu/jipu-config.cmake"
+"include(include(CMakeFindDependencyMacro)
+find_dependency(spdlog)
+find_dependency(VulkanMemoryAllocator)
+${PRE_JIPU_CONFIG_CMAKE}"
+)
 
 file(INSTALL "${SOURCE_PATH}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME "copyright")
-# file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include"
                     "${CURRENT_PACKAGES_DIR}/debug/share"
 )
