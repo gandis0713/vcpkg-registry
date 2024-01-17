@@ -20,7 +20,7 @@ vcpkg_cmake_config_fixup(CONFIG_PATH "share/jipu")
 
 file(READ "${CURRENT_PACKAGES_DIR}/share/jipu/jipu-config.cmake" PRE_JIPU_CONFIG_CMAKE)
 file(WRITE "${CURRENT_PACKAGES_DIR}/share/jipu/jipu-config.cmake"
-"include(include(CMakeFindDependencyMacro)
+"include(CMakeFindDependencyMacro)
 find_dependency(spdlog)
 find_dependency(VulkanMemoryAllocator)
 ${PRE_JIPU_CONFIG_CMAKE}"
