@@ -4,6 +4,8 @@
     "description": "jipu to abstract the modern graphics API.",
     "supports": "windows | osx | linux",
     "dependencies": [
+    "spdlog",
+    "vulkan-memory-allocator",
     {
         "name": "vcpkg-cmake",
         "host": true
@@ -11,8 +13,6 @@
     {
         "name": "vcpkg-cmake-config",
         "host": true
-    },
-    "spdlog",
-    "vulkan-memory-allocator"
+    }
     ]
   }

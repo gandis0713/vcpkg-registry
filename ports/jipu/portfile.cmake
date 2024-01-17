@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO gandis0713/jipu
     REF develop
-    SHA512 3bacb3e46c7710ea43c4988be85cdc6898381beab785c87b90d8f470c7ed3327763a7ded411fcb3602bb9a5fd2604070ca6785429d621cbc595e2f1f09c6e77a
+    SHA512 d2c1fb2a13d3e2273d5f8f9e19462dd5bd7681d411c3ed480eb26d99500be9622478a566c6aeff5d59541500989e85db39eed45c47d7f4b33155b685f28ded0f
     HEAD_REF main
 )
 
@@ -17,6 +17,8 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 vcpkg_cmake_config_fixup(CONFIG_PATH "share/jipu")
+vcpkg_fixup_pkgconfig()
+
 file(INSTALL "${SOURCE_PATH}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME "copyright")
 # file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include"
