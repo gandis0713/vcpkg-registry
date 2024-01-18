@@ -2,7 +2,7 @@
     "name": "jipu",
     "version-string": "0.0.1",
     "description": "jipu to abstract the modern graphics API.",
-    "supports": "windows | osx | linux",
+    "supports": "windows | osx | linux | android" ,
     "dependencies": [
     "spdlog",
     "vulkan-memory-allocator",
