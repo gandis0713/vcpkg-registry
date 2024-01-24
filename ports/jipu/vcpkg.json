@@ -5,6 +5,7 @@
     "supports": "windows | osx | linux | android" ,
     "dependencies": [
     "spdlog",
+    "vulkan-headers",
     "vulkan-memory-allocator",
     {
         "name": "vcpkg-cmake",

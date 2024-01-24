@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO gandis0713/jipu
     REF develop
-    SHA512 58e6d5d29a271594161c9f10f7fe8c530ade2daadc15321a1cbb962c6b89a90758a803882d9c0075b2b601e6428ee94fdeae93164ce2017c7f49c53311098841
+    SHA512 193a26da972afffa82e9d49cf78943a488e1c79fe630f31d8038fc0befcfa110ea49c33d1fbb33c176e6c599158661332ebe309f7aa0cf2b8255c70676e7d9a6
     HEAD_REF main
 )
 
@@ -22,6 +22,7 @@ file(READ "${CURRENT_PACKAGES_DIR}/share/jipu/jipu-config.cmake" PRE_JIPU_CONFIG
 file(WRITE "${CURRENT_PACKAGES_DIR}/share/jipu/jipu-config.cmake"
 "include(CMakeFindDependencyMacro)
 find_dependency(spdlog)
+find_dependency(VulkanHeaders)
 find_dependency(VulkanMemoryAllocator)
 ${PRE_JIPU_CONFIG_CMAKE}"
 )
