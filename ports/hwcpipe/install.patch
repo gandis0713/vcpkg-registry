@@ -1,0 +1,87 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b536a0..c018e9a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -118,3 +118,8 @@ if(HWCPIPE_FRONTEND_ENABLE_TESTS)
+     add_subdirectory(third_party/catch2)
+ endif()
+ 
++install(EXPORT hwcpipe-config
++    NAMESPACE hwcpipe::
++    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/hwcpipe
++)
++
+diff --git a/backend/device/CMakeLists.txt b/backend/device/CMakeLists.txt
+index d15bed6..13f8986 100644
+--- a/backend/device/CMakeLists.txt
++++ b/backend/device/CMakeLists.txt
+@@ -35,8 +35,6 @@ add_library(
+     src/device/num_exec_engines.cpp
+ )
+ 
+-target_include_directories(device PUBLIC "include")
+-
+ target_compile_definitions(device PRIVATE -DHWCPIPE_DEVICE_BUILDING=1)
+ 
+ if(HWCPIPE_SYSCALL_LIBMALI)
+@@ -45,7 +43,14 @@ if(HWCPIPE_SYSCALL_LIBMALI)
+ endif()
+ 
+ add_library(device_private INTERFACE)
+-target_include_directories(device_private INTERFACE "src")
++
++target_include_directories(device
++    PUBLIC
++    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
++    $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
++    PRIVATE
++    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
++)
+ 
+ target_link_libraries(
+     device
+@@ -55,3 +60,8 @@ target_link_libraries(
+ if(HWCPIPE_ENABLE_TESTS)
+     add_subdirectory(test)
+ endif()
++
++install(TARGETS device EXPORT hwcpipe-config)
++install(TARGETS device_private EXPORT hwcpipe-config)
++install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
++    DESTINATION ${CMAKE_INSTALL_PREFIX})
+diff --git a/hwcpipe/CMakeLists.txt b/hwcpipe/CMakeLists.txt
+index 126e322..d0ffa5f 100644
+--- a/hwcpipe/CMakeLists.txt
++++ b/hwcpipe/CMakeLists.txt
+@@ -18,11 +18,24 @@ if(HWCPIPE_PIC)
+     set_target_properties(hwcpipe PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ endif()
+ 
++target_link_libraries(hwcpipe
++    PUBLIC device
++)
++
+ target_include_directories(hwcpipe
+-    PUBLIC include
+-    PRIVATE src
++    PUBLIC
++    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
++    $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
++    PRIVATE
++    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+ )
+ 
+-target_link_libraries(hwcpipe
+-    PUBLIC device
+-)
+\ No newline at end of file
++install(TARGETS hwcpipe
++    EXPORT hwcpipe-config
++    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
++    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
++)
++
++install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
++    DESTINATION ${CMAKE_INSTALL_PREFIX})
+\ No newline at end of file
