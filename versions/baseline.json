@@ -7,6 +7,10 @@
     "hwcpipe": {
       "baseline": "2.2.0",
       "port-version": 0
+    },
+    "webgpu-headers": {
+      "baseline": "2024-06-13",
+      "port-version": 0
     }
   }
 }
