@@ -1,6 +1,6 @@
 {
     "name": "hwcpipe",
-    "version-string": "2.2.0",
+    "version-string": "2.3.0",
     "description": "Hardware counters interface for ARM",
     "supports": "android",
     "dependencies": [

@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1b536a0..c018e9a 100644
+index 9642038..73ec315 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -118,3 +118,8 @@ if(HWCPIPE_FRONTEND_ENABLE_TESTS)
@@ -12,11 +12,11 @@ index 1b536a0..c018e9a 100644
 +)
 +
 diff --git a/backend/device/CMakeLists.txt b/backend/device/CMakeLists.txt
-index d15bed6..13f8986 100644
+index de4cb71..3447d00 100644
 --- a/backend/device/CMakeLists.txt
 +++ b/backend/device/CMakeLists.txt
-@@ -35,8 +35,6 @@ add_library(
-     src/device/num_exec_engines.cpp
+@@ -36,8 +36,6 @@ add_library(
+     src/device/product_id.cpp
  )
  
 -target_include_directories(device PUBLIC "include")
@@ -24,7 +24,7 @@ index d15bed6..13f8986 100644
  target_compile_definitions(device PRIVATE -DHWCPIPE_DEVICE_BUILDING=1)
  
  if(HWCPIPE_SYSCALL_LIBMALI)
-@@ -45,7 +43,14 @@ if(HWCPIPE_SYSCALL_LIBMALI)
+@@ -46,7 +44,14 @@ if(HWCPIPE_SYSCALL_LIBMALI)
  endif()
  
  add_library(device_private INTERFACE)
@@ -40,7 +40,7 @@ index d15bed6..13f8986 100644
  
  target_link_libraries(
      device
-@@ -55,3 +60,8 @@ target_link_libraries(
+@@ -56,3 +61,8 @@ target_link_libraries(
  if(HWCPIPE_ENABLE_TESTS)
      add_subdirectory(test)
  endif()
@@ -50,10 +50,10 @@ index d15bed6..13f8986 100644
 +install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
 +    DESTINATION ${CMAKE_INSTALL_PREFIX})
 diff --git a/hwcpipe/CMakeLists.txt b/hwcpipe/CMakeLists.txt
-index 126e322..d0ffa5f 100644
+index d1b9115..9534e14 100644
 --- a/hwcpipe/CMakeLists.txt
 +++ b/hwcpipe/CMakeLists.txt
-@@ -18,11 +18,24 @@ if(HWCPIPE_PIC)
+@@ -24,11 +24,24 @@ if(HWCPIPE_PIC)
      set_target_properties(hwcpipe PROPERTIES POSITION_INDEPENDENT_CODE ON)
  endif()
  
