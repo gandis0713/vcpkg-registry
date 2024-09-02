@@ -1,6 +1,6 @@
 {
   "name": "webgpu-headers",
-  "version-date": "2024-06-13",
+  "version-date": "2024-09-02",
   "port-version": 0,
   "description": "webgpu native headers",
   "homepage": "https://webgpu-native.github.io/webgpu-headers"

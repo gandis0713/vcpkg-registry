@@ -1,8 +1,8 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO webgpu-native/webgpu-headers
-    REF 043af6c77e566f707db36759d9c9f161ebb616fd # committed on 2024-06-13
-    SHA512 2fae63b8839408b9791bc84f5de2c21cb61d10f9addbece8948634a2b01cbeed6bd7444f4921652f16ecade7e8e891a1b7ee82d260a3323a2be8a9d22d6e33cb
+    REF ba74360436a30ba363141d44ade4e1dec3df2a7c # committed on 2024-09-02
+    SHA512 08a5a272389caa3d2d870f053d751d5c9ac82182fb4db36236ed1f68c5df07972a1e4a4db2432422c170834a6ca386bd9544a36625c8d84dfef2a691f7bc0d8e
     HEAD_REF main
 )
 
