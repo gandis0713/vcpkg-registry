@@ -5,7 +5,8 @@ vcpkg_from_github(
     SHA512 9ce31583151be88a40e2a024a906b0f10431d2fc1564977b9b2ebd2d045d7afeaefb6251e438c886f1326308bc9cd3da781c1668c6879359d7626919c3da2144
     HEAD_REF main
     PATCHES
-    tint_install.patch
+    tint_dependency.patch
+    tint_include.patch
 )
 
 set(DAWN_OPTIONS

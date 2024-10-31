@@ -1,0 +1,20 @@
+diff --git a/src/tint/CMakeLists.txt b/src/tint/CMakeLists.txt
+index 61f4f4d2d4..161de3fe4a 100644
+--- a/src/tint/CMakeLists.txt
++++ b/src/tint/CMakeLists.txt
+@@ -725,10 +725,14 @@ if (TINT_ENABLE_INSTALL)
+ 
+   install(FILES ${TINT_HEADERS}  DESTINATION  ${CMAKE_INSTALL_INCLUDEDIR}/tint/)
+ 
++  message(STATUS "TINT_ROOT_SOURCE_DIR" ${TINT_ROOT_SOURCE_DIR})
+   file(GLOB_RECURSE TINT_SRC_HEADERS RELATIVE ${TINT_ROOT_SOURCE_DIR} "*.h")
+ 
+   foreach(TINT_HEADER_FILE ${TINT_SRC_HEADERS})
+       get_filename_component(TINT_HEADER_DIR ${TINT_HEADER_FILE} DIRECTORY)
+-      install(FILES ${TINT_ROOT_SOURCE_DIR}/${TINT_HEADER_FILE}  DESTINATION  ${CMAKE_INSTALL_INCLUDEDIR}/src/tint/${TINT_HEADER_DIR})
++      install(FILES ${TINT_ROOT_SOURCE_DIR}/${TINT_HEADER_FILE}  DESTINATION  ${CMAKE_INSTALL_INCLUDEDIR}/${TINT_HEADER_DIR})
+   endforeach ()
++
++  set(COMPILER_HEADER ${PROJECT_SOURCE_DIR}/src/utils/compiler.h)
++  install(FILES ${COMPILER_HEADER}  DESTINATION  ${CMAKE_INSTALL_INCLUDEDIR}/src/utils)
+ endif()
