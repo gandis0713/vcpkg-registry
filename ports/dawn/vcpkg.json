@@ -1,6 +1,6 @@
 {
     "name": "dawn",
-    "version-string": "2024-09-05",
+    "version-string": "2024-10-31",
     "description": "Dawn, a WebGPU implementation",
     "supports": "windows | osx | linux | android" ,
     "dependencies": [
