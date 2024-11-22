@@ -1,0 +1,29 @@
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index 1bc7f06249..d2e7ab47bd 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -28,6 +28,16 @@
+ # Don't build testing in third_party dependencies
+ set(BUILD_TESTING OFF)
+ 
++if(WIN32)
++find_program(GIT_EXCUTABLE git
++    HINTS "C:/Program Files/Git/cmd"
++)
++if(NOT GIT_EXCUTABLE)
++    message(FATAL_ERROR "Git not found. Please install Git from https://git-scm.com/download/win")
++endif()
++set(GIT_ARGS --git ${GIT_EXCUTABLE})
++endif()
++
+ # fetch_dawn_dependencies.py is an alternative to using depot_tools
+ # It is particularly interesting when building dawn as a subdirectory in
+ # a parent project that does not want to use depot_tools.
+@@ -43,6 +53,7 @@ if (DAWN_FETCH_DEPENDENCIES)
+             ${Python3_EXECUTABLE}
+             "${PROJECT_SOURCE_DIR}/tools/fetch_dawn_dependencies.py"
+             --directory ${PROJECT_SOURCE_DIR}
++            ${GIT_ARGS}
+             ${EXTRA_FETCH_ARGS}
+     )
+ endif ()
