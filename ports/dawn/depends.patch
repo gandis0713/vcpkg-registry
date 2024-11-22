@@ -1,0 +1,15 @@
+diff --git a/src/dawn/native/CMakeLists.txt b/src/dawn/native/CMakeLists.txt
+index be4aeff69e..f789792954 100644
+--- a/src/dawn/native/CMakeLists.txt
++++ b/src/dawn/native/CMakeLists.txt
+@@ -919,6 +919,10 @@ if (DAWN_BUILD_MONOLITHIC_LIBRARY)
+         dawn_install_target(dawn_public_config)
+         dawn_install_target(webgpu_dawn
+             HEADERS ${webgpu_dawn_public_headers})
++        if(WIN32)
++            dawn_install_target(dawn_common)
++            dawn_install_target(dawn_platform)
++        endif()
+     endif ()
+ endif ()
+ 
