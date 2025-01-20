@@ -8,6 +8,7 @@ vcpkg_from_github(
     tint_dependency.patch
     tint_include.patch
     thrid_party.patch
+    coherent.patch
 )
 
 set(DAWN_OPTIONS

@@ -1,0 +1,17 @@
+diff --git a/src/tint/lang/spirv/writer/printer/printer.cc b/src/tint/lang/spirv/writer/printer/printer.cc
+index c9ae32bf..17a4689d 100644
+--- a/src/tint/lang/spirv/writer/printer/printer.cc
++++ b/src/tint/lang/spirv/writer/printer/printer.cc
+@@ -2343,10 +2343,11 @@ class Printer {
+                                           {id, U32Operand(SpvDecorationNonReadable)});
+                     }
+                 }
++#ifndef __APPLE__
+                 if (!options_.use_vulkan_memory_model && access == core::Access::kReadWrite) {
+                     module_.PushAnnot(spv::Op::OpDecorate, {id, U32Operand(SpvDecorationCoherent)});
+                 }
+-
++#endif
+                 auto iidx = var->InputAttachmentIndex();
+                 if (iidx) {
+                     TINT_ASSERT(store_ty->Is<core::type::InputAttachment>());

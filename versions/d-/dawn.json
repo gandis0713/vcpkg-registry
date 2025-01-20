@@ -6,7 +6,13 @@
       },
       {
         "version": "2024-10-31",
+        "port-version": 0,
         "git-tree": "869bc8ac1b2abdf08caa536be0f119411a488802"
+      },
+      {
+        "version": "2024-10-31",
+        "port-version": 1,
+        "git-tree": "9f5a45315da0ca1acdd03aad1e061aac13360671"
       }
     ]
   }
